@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import json
 from distutils.version import LooseVersion
 
@@ -34,12 +33,6 @@ def get_setting(request, setting):
 
 
 def url_reverse(request):
-    """
-    Reverse the requested URL (passed via GET / POST as `url_name` parameter)
-
-    :param request: Request object
-    :return: The reversed path
-    """
     if request.method in ('GET', 'POST'): 
         data = getattr(request, request.method) 
         url_name = data.get('url_name') 
@@ -72,16 +65,6 @@ def _return_thumbnail(image, thumb_options=None, width=None, height=None):
 
 
 def url_image(request, image_id, thumb_options=None, width=None, height=None):
-    """
-    Converts a filer image ID in a complete path
-
-    :param request: Request object
-    :param image_id: Filer image ID
-    :param thumb_options: ThumbnailOption ID
-    :param width: user-provided width
-    :param height: user-provided height
-    :return: JSON serialized URL components ('url', 'width', 'height')
-    """
     image = File.objects.get(pk=image_id)
     if getattr(image, 'canonical_url', None):
         url = image.canonical_url
@@ -100,27 +83,11 @@ def url_image(request, image_id, thumb_options=None, width=None, height=None):
 
 
 def thumbnail_options(request):
-    """
-    Returns the requested ThumbnailOption as JSON
-
-    :param request: Request object
-    :return: JSON serialized ThumbnailOption
-    """
     response_data = [{'id': opt.pk, 'name': opt.name} for opt in ThumbnailOption.objects.all()]
     return http.HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 def serve_image(request, image_id, thumb_options=None, width=None, height=None):
-    """
-    returns the content of an image sized according to the parameters
-
-    :param request: Request object
-    :param image_id: Filer image ID
-    :param thumb_options: ThumbnailOption ID
-    :param width: user-provided width
-    :param height: user-provided height
-    :return: JSON serialized URL components ('url', 'width', 'height')
-    """
     image = File.objects.get(pk=image_id)
     if getattr(image, 'canonical_url', None):
         url = image.canonical_url
