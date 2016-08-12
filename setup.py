@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='ckeditor_filer',
-    version='1.0.0',
+    version='0.1',
     packages=[''],
     url='',
     license='',
