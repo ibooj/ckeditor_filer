@@ -1,9 +1,11 @@
-from distutils.core import setup
+#!/usr/bin/env python
+
+from setuptools import find_packages, setup
 
 setup(
     name='ckeditor-filer',
     version='0.1',
-    packages=['ckeditor_filer'],
+    packages=find_packages(),
     url='https://github.com/ibooj/ckeditor_filer',
     license='',
     author='ibooj',
