@@ -10,7 +10,7 @@
 'use strict';
 
 (function (jQuery) {
-    if (typeof base_admin_url != "undefined") var base_admin_url = false;
+    var base_admin_url = (typeof window.base_admin_url == "undefined") ? false : window.base_admin_url;
     CKEDITOR.dialog.add('filerImageDialog', function (editor) {
         var dialog = CKEDITOR.dialog.getCurrent(),
             idSuffix = '_filerImageDialog',
