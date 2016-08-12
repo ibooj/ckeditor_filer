@@ -10,6 +10,7 @@
 'use strict';
 
 (function (jQuery) {
+    if (typeof base_admin_url != "undefined") var base_admin_url = false;
     CKEDITOR.dialog.add('filerImageDialog', function (editor) {
         var dialog = CKEDITOR.dialog.getCurrent(),
             idSuffix = '_filerImageDialog',
@@ -19,7 +20,7 @@
             commonLang = editor.lang.common,
             base_ckeditor = '/ckeditor_filer',
             base_static = editor.plugins.filerimage.path + '../../../../../static',
-            base_admin = '/admin',
+            base_admin = base_admin_url || '/admin',
             nofile_icon = base_static + '/filer/icons/nofile_48x48.png';
         if (editor.filer_version < 1.2)
             var picker = 't=file_ptr';
