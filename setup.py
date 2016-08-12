@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='ckeditor_filer',
     version='0.1',
-    packages=[''],
+    packages=['ckeditor_filer'],
     url='',
     license='',
     author='ibooj',
