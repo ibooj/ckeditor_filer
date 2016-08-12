@@ -1,0 +1,4 @@
+include MANIFEST.in
+include README.md
+recursive-include ckeditor_filer/static *
+global-exclude __pycache__ *.pyc
